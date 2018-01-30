@@ -257,7 +257,7 @@ if(isset($_GET['id']))
                 <option value="success">CONCLUÍDO</option>
                 <option value="info">EM ANDAMENTO</option>
                 <option value="danger">CANCELADA</option>
-                <option value="active">NÃO INCIADA</option>
+                <option value="active">NÃO INICIADA</option>
               </select>
             </div>
           </div>
