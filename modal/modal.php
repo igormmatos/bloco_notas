@@ -19,13 +19,32 @@
             <textarea class="form-control" id="descricao" name="notas[descricao]" style="resize: none" required></textarea>
           </div>
           <div class="form-group">
-            <label for="data_entrega">Data Entrega :</label>
-            <input type="date" class="form-control" id="data_entrega" name="notas[data_entrega]" value="" required>
+            <div class="col-md-3">
+              <label for="prioridade_select">Prioridade</label>
+              <select class="form-control" id="prioridade_select" name="notas[prioridade_select]">
+                <option value="0">BAIXA</option>
+                <option value="1">MÉDIA</option>
+                <option value="2">ALTA</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="status_select">Status</label>
+              <select class="form-control" id="status_select" name="notas[status_select]">
+                <option value="active">NÃO INICIADA</option>
+                <option value="success">CONCLUÍDO</option>
+                <option value="info">EM ANDAMENTO</option>
+                <option value="danger">CANCELADA</option>
+              </select>
+            </div>
+            <div class="col-md-5">
+              <label for="data_entrega">Data Entrega :</label>
+              <input type="date" class="form-control" id="data_entrega" name="notas[data_entrega]" value="" required>
+            </div>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <input type="button" class="btn btn-default" value="Adicionar" id="btnAdicionar" required>
+        <div class="form-group text-right" style="margin-top: 90px;">
+            <input type="button" class="btn btn-default" value="Adicionar" id="btnAdicionar" required>
+        </div>
       </div>
     </div>
 

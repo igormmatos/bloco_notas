@@ -86,10 +86,10 @@ class Usuario
         $_SESSION['alert'] = "alert-warning";
       }
       else{
-        $sql = $con->prepare("INSERT INTO usuarios_nota VALUES(NULL,?,?)");
-
+        $sql = $con->prepare("INSERT INTO usuarios_nota VALUES(NULL,?,?, null, null)");
         $sql->execute(array($this->email, $this->senha)) ;
-        header("Location: index.php");
+        header("Location: index2.php?l=lr");
+
       }
     }
     else

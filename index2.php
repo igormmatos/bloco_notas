@@ -1,14 +1,21 @@
 <?php
+if(isset($_GET['l']))
+{
+	if($_GET['l'] == "lr")
+	{
+		$_SESSION['msg'] = "<strong>Cadastrado</strong> com sucesso!";
+		$_SESSION['alert'] = "alert-success";
+	}
+}
 if(isset($_POST['email']) && isset($_POST['senha']))
 {
 	session_start();
 
 	require_once ("classes/Usuario.php");
 	$usuario = new Usuario();
+
 	if(isset($_GET['a']))
-	{
-		$usuario->add();
-	}
+	$usuario->add();
 	else
 	$usuario->login();
 }
@@ -86,12 +93,12 @@ if(isset($_POST['email']) && isset($_POST['senha']))
 					?>
 				</span>
 				<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "DIGITE SEU USUÁRIO">
-					<input class="input100" type="text" name="email"  pattern="[a-zA-Z0-9]+">
+					<input class="input100" type="text" name="email">
 					<span class="focus-input100" data-placeholder="Usuário"></span>
 				</div>
 
 				<div class="wrap-input100 validate-input m-b-50" data-validate="DIGITE SUA SENHA">
-					<input class="input100" type="password" name="senha"  pattern="[a-zA-Z0-9]+">
+					<input class="input100" type="password" name="senha" >
 					<span class="focus-input100" data-placeholder="Senha"></span>
 				</div>
 

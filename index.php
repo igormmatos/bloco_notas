@@ -103,7 +103,7 @@ if(isset($_GET['id']))
           <i class="fa fa-bars"></i>
         </button>
         <a class="navbar-brand page-scroll">
-          <i class="fa fa-pencil-square-o"></i> Note<b class="small" style="color: #E75926;">+</b><strong style="font-size: 12px">V2.6</strong>
+          <i class="fa fa-pencil-square-o"></i> Note<b class="small" style="color: #E75926;">+</b><strong style="font-size: 12px">V2.7</strong>
         </a>
       </div>
 
@@ -213,15 +213,15 @@ if(isset($_GET['id']))
       </div>
       <div class="row" style="margin-top: 50px">
         <div class="col-md-8" id="area_descricao">
-          <div class="row text-center pull-center" style="margin-bottom: 25px;" id="tit_nota">
-            <input type="text" class="form-control text-center hidden" id="edit_titulo" style="width:95%"/>
+          <i id="edit_titulo" class="fa fa-pencil-square pull-left" title="Editar Título" style="font-size:24px; margin-bottom: 5px; color: #333; cursor:pointer;"></i>
+          <div class="row text-center pull-center" style="margin-bottom: 25px;" id="tit_nota;">
             <h2><strong id="titulo_nota" style="line-height: 115%; margin-right: 6px;"></strong></h2>
           </div>
           <hr style="width:50%"/>
           <div class="row">
             <h5><strong>Descrição:</strong></h5>
           </div>
-          <div class="row" id="descricao_nota" style="cursor: context-menu; margin-right: 6px;" title="DUPLO CLIQUE PARA EDITAR">
+          <div class="row" id="descricao_nota" style="cursor: context-menu; margin-right: 6px;" title="CLIQUE PARA EDITAR">
           </div>
         </div>
         <div class="col-md-4 linha">
@@ -349,14 +349,13 @@ $(document).ready(function(){
       $("#titulo_editar").focus();
     }
   });
-  $("#titulo_nota").dblclick(function(){
-    var titulo = $(this).html();
-    $("#edit_titulo").val(titulo);
-    $(this).html("");
-    $("#edit_titulo").removeClass("hidden");
+  $("#edit_titulo").click(function(){
+    var tit = document.getElementById( 'titulo_nota' );
+    tit.setAttribute( 'contenteditable', true );
+    $("#titulo_nota").focus();
   });
-  $("#edit_titulo").blur(function(){
-    var titulo = $(this).val();
+  $("#titulo_nota").blur(function(){
+    var titulo = $(this).html();
     var id = $('#id_nota').html();
     if(titulo !="")
     {
@@ -373,8 +372,6 @@ $(document).ready(function(){
           console.log("ok");
         }
       );
-      $("#titulo_nota").html(titulo);
-      $("#edit_titulo").addClass("hidden");
       $("#msg_alterar").html("Nota alterada!")
       $("#container_msg").show("fast", "linear");
 

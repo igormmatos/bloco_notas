@@ -191,27 +191,30 @@ class Notas
       $sql->execute(array($this->prioridade, $this->id)) ;
     }
     else if ( !isset($_GET['prioridade']) ){
-      $this->prioridade=$_GET['status'];
+      $this->status=$_GET['status'];
 
       $sql = $con->prepare("UPDATE notas SET status=? WHERE id=?");
-      $r = $sql->execute(array($this->prioridade, $this->id)) ;
+      $r = $sql->execute(array($this->status, $this->id)) ;
     }
   }
   public function add(){
     if (isset($_POST['notas']) ){
+      date_default_timezone_set('America/Sao_Paulo');
+
       $con = new PDO(SERVIDOR, USUARIO, SENHA);
 
       $this->user_id = $_SESSION['user_id'];
       $this->titulo=$_POST['notas']['titulo'];
       $this->descricao=$_POST['notas']['descricao'];
       $this->data_entrega=$_POST['notas']['data_entrega'];
-
+      $this->status=$_POST['notas']['status_select'];
+      $this->prioridade=$_POST['notas']['prioridade_select'];
+      $this->data_adicao = date("Y-m-d H:i:s");
       try
       {
         $this->titulo = str_replace("<script>","<code>", $this->titulo);
-        $sql = $con->prepare("INSERT INTO notas (id, titulo, descricao, data_entrega, user_id) VALUES(NULL,?,?,?,?)");
-
-        $sql->execute(array($this->titulo, $this->descricao, $this->data_entrega, $this->user_id));
+        $sql = $con->prepare("INSERT INTO notas (id, titulo, descricao, data_entrega, user_id, status, prioridade, data_adicao) VALUES(NULL,?,?,?,?,?,?,?)");
+        $sql->execute(array($this->titulo, $this->descricao, $this->data_entrega, $this->user_id, $this->status, $this->prioridade,$this->data_adicao));
         $_SESSION['msg'] = "<strong>Cadastrado</strong> com sucesso!";
         $_SESSION['alert'] = "alert-success";
         header("Location: index.php");
