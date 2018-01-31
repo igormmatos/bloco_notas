@@ -221,7 +221,7 @@ if(isset($_GET['id']))
           <div class="row">
             <h5><strong>Descrição:</strong></h5>
           </div>
-          <div class="row" id="descricao_nota" style="cursor: context-menu; margin-right: 6px;" title="CLIQUE PARA EDITAR">
+          <div class="row" id="descricao_nota" style="cursor: context-menu; margin-right: 6px;" title="DUPLO CLIQUE PARA EDITAR">
           </div>
         </div>
         <div class="col-md-4 linha">
@@ -267,6 +267,7 @@ if(isset($_GET['id']))
         <div class="row" id="btnExcluir" style="margin-left:6px;">
           <!--button type="button" class="btn btn-warning small" id="EditarNota">Editar Nota</button-->
           <button type="button" class="btn btn-danger small" id="ExcluirNota">Excluir Nota</button>
+          <input type="text" id="url" hidden/>
         </div>
       </div>
     </div>
@@ -423,10 +424,12 @@ $(document).ready(function(){
     var id = $(this).attr('id');
     if(id != null)
     {
+      var url = window.location.href;
       $('#input_id').val(id);
       $("#notas_detalhes").show('fast', 'linear');
       $("#notas").hide('fast', 'linear');
       $("#id_nota").html(id);
+      $("#url").val(url);
       $.getJSON("view.php?id=" + id, function(dados) {
         $("#titulo_nota").html(dados.titulo);
         $("#descricao_nota").html(dados.descricao);
@@ -438,12 +441,8 @@ $(document).ready(function(){
     }
   });
   $("#fechar_detalhes").click(function(){
-    $('#input_id').val('');
-    $("#notas_detalhes").hide('fast', 'linear');
-    $("#notas").show('fast', 'linear');
-    $("#id_nota").html('');
-    $("#container_msg").addClass("hidden");
-    setInterval(function(){   window.location.reload(); }, 250);
+    var url = $("#url").val();
+    window.location.href = url;
   });
   $("#dt_entrega_nota").change(function(){
     var id = $("#id_nota").html();

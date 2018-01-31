@@ -21,6 +21,7 @@ class Notas
     define('SERVIDOR', 'mysql:host=localhost;dbname=bd_nota');
     define('USUARIO', 'root');
     define('SENHA', 'root');
+
     $this -> id = $id;
     $this -> titulo = $titulo;
     $this -> descricao = $descricao;
@@ -199,8 +200,6 @@ class Notas
   }
   public function add(){
     if (isset($_POST['notas']) ){
-      date_default_timezone_set('America/Sao_Paulo');
-
       $con = new PDO(SERVIDOR, USUARIO, SENHA);
 
       $this->user_id = $_SESSION['user_id'];
@@ -209,7 +208,10 @@ class Notas
       $this->data_entrega=$_POST['notas']['data_entrega'];
       $this->status=$_POST['notas']['status_select'];
       $this->prioridade=$_POST['notas']['prioridade_select'];
+      date_default_timezone_set('America/Sao_Paulo');
+
       $this->data_adicao = date("Y-m-d H:i:s");
+
       try
       {
         $this->titulo = str_replace("<script>","<code>", $this->titulo);
