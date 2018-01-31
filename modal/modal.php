@@ -31,9 +31,10 @@
               <label for="status_select">Status</label>
               <select class="form-control" id="status_select" name="notas[status_select]">
                 <option value="active">NÃO INICIADA</option>
-                <option value="success">CONCLUÍDO</option>
+                <option value="success">CONCLUÍDA</option>
                 <option value="info">EM ANDAMENTO</option>
                 <option value="danger">CANCELADA</option>
+                <option value="warning">ANOTAÇÃO</option>
               </select>
             </div>
             <div class="col-md-5">

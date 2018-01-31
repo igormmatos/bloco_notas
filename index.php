@@ -176,6 +176,7 @@ if(isset($_GET['id']))
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody class="ajuda">
@@ -184,6 +185,7 @@ if(isset($_GET['id']))
                 <td class="info">Em andamento</td>
                 <td class="danger">Cancelada</td>
                 <td class="active">Não Iniciada</td>
+                <td class="warning">Anotação</td>
               </tr>
             </tbody>
           </table>
@@ -263,6 +265,7 @@ if(isset($_GET['id']))
                 <option value="info">EM ANDAMENTO</option>
                 <option value="danger">CANCELADA</option>
                 <option value="active">NÃO INICIADA</option>
+                <option value="warning">ANOTAÇÃO</option>
               </select>
             </div>
           </div>
