@@ -92,7 +92,7 @@ if(isset($_GET['id']))
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
   <div id="preloader">
     <div id="status">
-      <img src="img/preloader.gif" height="64" width="64" alt="">
+      <img src="img/carregar.gif" height="64" width="64" alt="">
     </div>
   </div>
   <!-- Navigation -->
@@ -102,7 +102,7 @@ if(isset($_GET['id']))
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
           <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand page-scroll">
+        <a class="navbar-brand page-scroll" id="logo" style="cursor: pointer">
           <i class="fa fa-pencil-square-o"></i> Note<b class="small" style="color: #E75926;">+</b><strong style="font-size: 12px">V2.7</strong>
         </a>
       </div>
@@ -439,6 +439,9 @@ $(document).ready(function(){
         $("#prioridade_select").val(dados.prioridade);
       });
     }
+  });
+  $("#logo").click(function(){
+    window.location.href = "index.php";
   });
   $("#fechar_detalhes").click(function(){
     var url = $("#url").val();
