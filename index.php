@@ -67,6 +67,11 @@ if(isset($_GET['id']))
     position:absolute;
     width: 220px;
   }
+  .pop2{
+    margin-top: -75px;
+    position:absolute;
+    width: 97.5%;
+  }
   #user_logout{
     color: #E75926;
   }
@@ -163,7 +168,7 @@ if(isset($_GET['id']))
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="table-responsive">
+        <div class="table-responsive pop2">
           <table class="table table-condensed">
             <thead class="text-right ajuda">
               <tr>
