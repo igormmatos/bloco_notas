@@ -50,6 +50,7 @@ if(isset($_GET['id']))
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
 
   <style>
   #ajuda:hover{
@@ -78,6 +79,13 @@ if(isset($_GET['id']))
   #user_logout:hover{
     color: #fff;
   }
+  #igor{
+    color: #E75926;
+  }
+  #igor:hover{
+    color: #333;
+  }
+
   #footer_url{
     color: #E75926;
   }
@@ -90,6 +98,17 @@ if(isset($_GET['id']))
   li > a.active{
     background-color:#E75926 !important;
     color:#fff !important;
+  }
+  .footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Dosis', sans-serif;
+    font-size: 15px;
+  }
+  .cor-footer{
+    background-color: #333;
   }
   </style>
 </head>
@@ -416,7 +435,7 @@ $(document).ready(function(){
   <?php if(isset($_SESSION['msg'])) :?>
   setInterval(function(){$("#limpar_session").click();}, 5000);
   <?php endif?>
-  $("#ajuda").click(function(){
+  $("#ajuda").hover(function(){
     $(".ajuda").toggle('fast', 'linear');
   });
   $("#feedback").click(function(){
@@ -555,5 +574,12 @@ function formatarDataHora(dataHora)
 ================================================== -->
 <script type="text/javascript" src="js/main.js"></script>
 </body>
-
+<div class="footer cor-footer" style="margin-top: 3px">
+  <div class="col-md-1"></div>
+  <div class="col-md-11">
+    <p class="text-left">
+      Desenvolvido por <strong><a href="https://igormmatos.github.io/" target="_blank" id="igor">Igor M Matos</a></strong>
+    </p>
+  </div>
+</div>
 </html>
