@@ -14,9 +14,16 @@ class Usuario
   {
     $tipo_conexao = $_SERVER['HTTP_HOST'];
 
-    define('SERVIDOR', 'mysql:host=localhost;dbname=bd_nota');
-    define('USUARIO', 'root');
-    define('SENHA', 'root');
+    if (($tipo_conexao == 'localhost') || ($tipo_conexao == '127.0.0.1')){
+      define('SERVIDOR', 'mysql:host=localhost;dbname=bd_nota');
+      define('USUARIO', 'root');
+      define('SENHA', 'root');
+    }
+    else {
+      define('SERVIDOR', 'mysql:host=localhost;dbname=igor_taskmanager');
+      define('USUARIO', 'igor_root2c');
+      define('SENHA', 'rootigor');
+    }
 
     $this -> id = $id;
     $this -> email = $email;
@@ -39,7 +46,6 @@ class Usuario
     }
     date_default_timezone_set('America/Sao_Paulo');
     $agora = date('Y-m-d H:i:s');
-
     $this->email=$_POST['email'];
     $this->senha=$_POST['senha'];
 
@@ -57,6 +63,7 @@ class Usuario
       $sql = $con->prepare("UPDATE usuarios_nota SET ip_acesso =?, ultimo_acesso=? WHERE id = ?");
       $sql->execute(array($ip,$agora,$_SESSION['user_id']));
 
+      
       if(isset($_SESSION['msg']) || isset($_SESSION['alert'])){
         unset($_SESSION['msg']);
         unset($_SESSION['alert']);

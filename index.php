@@ -127,7 +127,7 @@ if(isset($_GET['id']))
           <i class="fa fa-bars"></i>
         </button>
         <a class="navbar-brand page-scroll" id="logo" style="cursor: pointer">
-          <i class="fa fa-pencil-square-o"></i> Note<b class="small" style="color: #E75926;">+</b><strong style="font-size: 12px">V2.7</strong>
+          <i class="fa fa-pencil-square-o"></i> Note<b class="small" style="color: #E75926;">+</b><strong style="font-size: 12px">V2.8</strong>
         </a>
       </div>
 

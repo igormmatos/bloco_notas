@@ -18,10 +18,16 @@ class Notas
   {
     $tipo_conexao = $_SERVER['HTTP_HOST'];
 
-    define('SERVIDOR', 'mysql:host=localhost;dbname=bd_nota');
-    define('USUARIO', 'root');
-    define('SENHA', 'root');
-
+    if (($tipo_conexao == 'localhost') || ($tipo_conexao == '127.0.0.1')){
+      define('SERVIDOR', 'mysql:host=localhost;dbname=bd_nota');
+      define('USUARIO', 'root');
+      define('SENHA', 'root');
+    }
+    else {
+      define('SERVIDOR', 'mysql:host=localhost;dbname=igor_taskmanager');
+      define('USUARIO', 'igor_root2c');
+      define('SENHA', 'rootigor');
+    }
     $this -> id = $id;
     $this -> titulo = $titulo;
     $this -> descricao = $descricao;
